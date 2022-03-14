@@ -1,0 +1,13 @@
+{
+  "compilerOptions": {
+    "lib": ["deno.ns", "dom"]
+  },
+  "lint": {
+    "files": {
+      "include": ["src/", "scripts/"]
+    },
+    "rules": {
+      "tags": ["recommended"]
+    }
+  }
+}

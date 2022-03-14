@@ -1,7 +1,11 @@
-# Do not put environment specific files here.
+# Do not put environment specific files here (e.g. OS, IDE).
 
 # Common
 *.log
 
 # Node.js
 node_modules
+
+# Project
+/esm
+/esm.tmp

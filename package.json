@@ -1,16 +1,29 @@
 {
-  "name": "@ctlg/root",
-  "private": true,
+  "name": "ctlg",
   "packageManager": "pnpm@6.32.3",
+  "version": "0.0.0",
+  "type": "module",
+  "main": "es2020/index.js",
+  "types": "es2020/index.d.ts",
+  "author": {
+    "email": "pockawoooh@gmail.com",
+    "name": "Shota FUJI",
+    "url": "https://github.com/pocka"
+  },
+  "license": "Apache-2.0",
   "devDependencies": {
     "husky": "^7.0.4",
     "lint-staged": "^12.3.5",
-    "prettier": "^2.5.1"
+    "prettier": "^2.5.1",
+    "typescript": "^4.6.2"
   },
   "scripts": {
-    "prepare": "husky install"
+    "prepare": "husky install",
+    "build": "deno run --unstable --allow-read --allow-write --allow-run ./scripts/build-nodejs.ts",
+    "fmt": "prettier --write ."
   },
   "lint-staged": {
     "*.{md,json}": "prettier --write"
-  }
+  },
+  "prettier": {}
 }
