@@ -1,0 +1,16 @@
+{
+  "name": "@ctlg/root",
+  "private": true,
+  "packageManager": "pnpm@6.32.3",
+  "devDependencies": {
+    "husky": "^7.0.4",
+    "lint-staged": "^12.3.5",
+    "prettier": "^2.5.1"
+  },
+  "scripts": {
+    "prepare": "husky install"
+  },
+  "lint-staged": {
+    "*.{md,json}": "prettier --write"
+  }
+}

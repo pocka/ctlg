@@ -1,0 +1,7 @@
+# Do not put environment specific files here.
+
+# Common
+*.log
+
+# Node.js
+node_modules
