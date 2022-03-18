@@ -3,8 +3,8 @@
   "packageManager": "pnpm@6.32.3",
   "version": "0.0.0",
   "type": "module",
-  "main": "es2020/index.js",
-  "types": "es2020/index.d.ts",
+  "main": "es2020/mod.js",
+  "types": "es2020/mod.d.ts",
   "author": {
     "email": "pockawoooh@gmail.com",
     "name": "Shota FUJI",
