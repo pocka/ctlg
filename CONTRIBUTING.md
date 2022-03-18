@@ -40,5 +40,8 @@ This project uses Prettier as it supports various file types including HTML and 
 Do not run `deno fmt`, as it could possibly conflict with Prettier.
 
 ```sh
+$ pnpm prettier --write .
+
+# alias:
 $ pnpm fmt
 ```
