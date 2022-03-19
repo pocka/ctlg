@@ -16,7 +16,7 @@ $ pnpm i
 
 ```sh
 # This builds JS files under esm/
-$ deno run --unstable --allow-read --allow-write --allow-run ./scripts/build.ts
+$ deno run --unstable --allow-read=. --allow-write=. --allow-run=pnpm ./scripts/build.ts
 
 # alias:
 $ pnpm build

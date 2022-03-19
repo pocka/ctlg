@@ -19,7 +19,7 @@
   },
   "scripts": {
     "prepare": "husky install",
-    "build": "deno run --unstable --allow-read --allow-write --allow-run ./scripts/build.ts",
+    "build": "deno run --unstable --allow-read=. --allow-write=. --allow-run=pnpm ./scripts/build.ts",
     "fmt": "prettier --write ."
   },
   "lint-staged": {
