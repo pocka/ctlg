@@ -9,5 +9,9 @@
     "rules": {
       "tags": ["recommended"]
     }
+  },
+  "tasks": {
+    "build": "deno run --unstable --allow-read=. --allow-write=. --allow-run=pnpm ./scripts/build.ts",
+    "fmt": "pnpm prettier --write ."
   }
 }
