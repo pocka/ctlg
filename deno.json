@@ -12,6 +12,7 @@
   },
   "tasks": {
     "build": "deno run --unstable --allow-read=. --allow-write=. --allow-run=pnpm ./scripts/build.ts",
-    "fmt": "pnpm prettier --write ."
+    "fmt": "pnpm prettier --write .",
+    "check-deps": "deno info --json src/mod.ts | deno run --config ./scripts/deno.json ./scripts/zero-deps.ts"
   }
 }

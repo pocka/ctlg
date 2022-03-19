@@ -59,6 +59,21 @@ Linting is done by Deno's lint feature.
 $ deno lint
 ```
 
+## Check runtime dependencies
+
+This package is zero-dependency (no runtime dependencies).
+`scripts/zero-deps` ensures runtime source codes does not include any external dependencies.
+
+- This task requires Deno.
+
+```sh
+# root deno.json specifies `"lib": ["deno.ns", "dom"]` and this conflicts with imported standard libraries
+$ deno info --json src/mod.ts | deno run --config ./scripts/deno.json ./scripts/zero-deps.ts
+
+# alias:
+$ deno task check-deps
+```
+
 ## Format source code
 
 This project uses Prettier as it supports various file types including HTML and CSS.
