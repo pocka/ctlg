@@ -8,6 +8,8 @@
 ## Initial setup
 
 ```sh
+# NOTE: I recommend you to check `package.json#scripts` before executing pnpm/npm commands.
+
 # Install dependencies
 $ pnpm i
 ```
