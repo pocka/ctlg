@@ -4,7 +4,7 @@
   },
   "lint": {
     "files": {
-      "include": ["*.ts", "lib/", "scripts/"]
+      "include": ["mod.ts", "version.ts", "lib/", "scripts/", "examples/"]
     },
     "rules": {
       "tags": ["recommended"]
@@ -12,7 +12,7 @@
   },
   "fmt": {
     "files": {
-      "include": ["*.ts", "lib/", "scripts/"]
+      "include": ["mod.ts", "version.ts", "lib/", "scripts/", "examples/"]
     }
   },
   "tasks": {
