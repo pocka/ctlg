@@ -1,18 +1,22 @@
 {
   "compilerOptions": {
-    "lib": ["deno.ns", "dom"]
+    "lib": ["dom", "deno.ns"]
   },
   "lint": {
     "files": {
-      "include": ["src/", "scripts/"]
+      "include": ["*.ts", "lib/", "scripts/"]
     },
     "rules": {
       "tags": ["recommended"]
     }
   },
+  "fmt": {
+    "files": {
+      "include": ["*.ts", "lib/", "scripts/"]
+    }
+  },
   "tasks": {
-    "build": "deno run --unstable --allow-read=. --allow-write=. --allow-run=pnpm ./scripts/build.ts",
-    "fmt": "pnpm prettier --write .",
-    "check-deps": "deno info --json src/mod.ts | deno run --config ./scripts/deno.json ./scripts/zero-deps.ts"
+    "build": "deno run --config ./scripts/deno.json --allow-read --allow-write=npm,/home --allow-run=npm --allow-env=HOME,XDG_CACHE_HOME,DENO_DIR,DENO_AUTH_TOKENS ./scripts/build.ts",
+    "check-deps": "deno info --json mod.ts | deno run --config ./scripts/deno.json ./scripts/zero-deps.ts"
   }
 }

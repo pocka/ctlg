@@ -1,59 +1,44 @@
-// This script transpiles TypeScript file inside `src/` directory to JavaScript
-import { copy, emptyDir, walk } from "https://deno.land/std@0.130.0/fs/mod.ts";
+import { build, emptyDir } from "https://deno.land/x/dnt@0.22.0/mod.ts";
+import { version } from "../version.ts";
 
-try {
-  const srcDir = new URL("../src", import.meta.url);
-  const tmpDir = new URL("../esm.tmp", import.meta.url);
-  const outDir = new URL("../esm", import.meta.url);
+const root = new URL("../", import.meta.url);
+const dist = new URL("npm", root).pathname;
 
-  // Clean output directory
-  await emptyDir(outDir.pathname);
+await emptyDir(dist);
 
-  // Empty temporary directory in order to prevent gabarge files to be compiled
-  await emptyDir(tmpDir.pathname);
+await build({
+  entryPoints: [new URL("mod.ts", root).pathname],
+  outDir: dist,
+  test: false,
+  shims: {},
+  // Disable CJS output
+  scriptModule: false,
+  package: {
+    name: "ctlg",
+    version,
+    license: "Apache-2.0",
+    author: {
+      email: "pockawoooh@gmail.com",
+      name: "Shota FUJI",
+      url: "https://github.com/pocka",
+    },
+    repository: {
+      type: "git",
+      url: "https://github.com/pocka/ctlg",
+    },
+    bugs: {
+      url: "https://github.com/pocka/ctlg/issues",
+    },
+  },
+});
 
-  // Copy src directory, so we can safely rewrite `.ts` file extension to `.js`
-  await copy(srcDir.pathname, tmpDir.pathname, {
-    overwrite: true,
-  });
+const filesToCopy: readonly string[] = ["LICENSE", "README.md"];
 
-  // Collect files to be rewritten
-  const files: string[] = [];
-  for await (const entry of walk(tmpDir.pathname)) {
-    if (entry.isDirectory) {
-      continue;
-    }
+Promise.all(
+  filesToCopy.map(async (file) => {
+    const src = new URL(file, root);
+    const dist = new URL("npm/" + file, root);
 
-    if (/\.ts$/.test(entry.path)) {
-      files.push(entry.path);
-    }
-  }
-
-  // Replace every ".ts" import to ".js"
-  await Promise.all(
-    files.map(async (file) => {
-      const contents = await Deno.readTextFile(file);
-
-      const code = contents.replace(/(from\s+"[^"]+)\.ts(")/g, "$1.js$2");
-
-      await Deno.writeTextFile(file, code);
-    })
-  );
-
-  // Compile with tsc
-  const process = Deno.run({
-    cmd: ["pnpm", "tsc"],
-  });
-
-  const status = await process.status();
-  if (status.code !== 0) {
-    throw new Error(`Process exit with ${status.code}`);
-  }
-
-  // Remove temporary directory
-  await Deno.remove(tmpDir, {
-    recursive: true,
-  });
-} catch (err) {
-  console.error(err);
-}
+    return await Deno.copyFile(src, dist);
+  }),
+);

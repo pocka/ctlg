@@ -1,4 +1,4 @@
-import { assertEquals, assertArrayIncludes } from "../testing/assert.ts";
+import { assertArrayIncludes, assertEquals } from "../testing/assert.ts";
 import { enumerate, Instance } from "./matrix.ts";
 
 Deno.test("Enumerate single field matrix", () => {

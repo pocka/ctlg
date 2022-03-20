@@ -1,6 +1,0 @@
-# Node.js (and ecosystem)
-pnpm-lock.yaml
-node_modules
-
-# Project
-/esm

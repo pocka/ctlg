@@ -51,7 +51,7 @@ export async function check(): Promise<never> {
 
   if (!isInspectionResult(result)) {
     throw new Error(
-      "Cannot process the JSON: shape must be equal to or superset of { modules: Array<{ specifier: [] }> }"
+      "Cannot process the JSON: shape must be equal to or superset of { modules: Array<{ specifier: [] }> }",
     );
   }
 
@@ -65,7 +65,7 @@ export async function check(): Promise<never> {
   // Show an error if there is
   if (externalModules.length > 0) {
     console.error(
-      red(bold(`Found ${externalModules.length} external dependencies:`))
+      red(bold(`Found ${externalModules.length} external dependencies:`)),
     );
     externalModules.forEach((mod) => {
       console.error(gray(` * ${white(mod.specifier)}`));

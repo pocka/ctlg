@@ -5,6 +5,8 @@ Deno.test("Do not touch input string", () => {
   const className = "foo";
   const colour = "tomato";
 
-  // prettier-ignore
-  assertEquals(css`.${className} { background: ${colour}; }`, ".foo { background: tomato; }");
+  assertEquals(
+    css`.${className} { background: ${colour}; }`,
+    ".foo { background: tomato; }",
+  );
 });

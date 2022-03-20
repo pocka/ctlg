@@ -21,7 +21,7 @@ export type Instance<T extends Matrix> = {
  */
 export function enumerate<T extends Matrix>(matrix: T): Instance<T>[] {
   return enumerateEntries(Object.entries(matrix)).map<Instance<T>>(
-    (entries) => Object.fromEntries(entries) as Instance<T>
+    (entries) => Object.fromEntries(entries) as Instance<T>,
   );
 }
 

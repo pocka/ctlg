@@ -3,9 +3,5 @@
 # Common
 *.log
 
-# Node.js
-node_modules
-
 # Project
-/esm
-/esm.tmp
+/npm
