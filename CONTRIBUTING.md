@@ -30,7 +30,8 @@ $ deno task build
 Every test files have `.test.ts` extension. `src/testing` directory exports testing module from Deno standard library.
 
 ```sh
-$ deno test
+# --quiet test suppress console warning emitted by aria-keyshortcuts parser
+$ deno test --quiet
 ```
 
 ## Lint

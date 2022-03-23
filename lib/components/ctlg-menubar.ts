@@ -22,6 +22,7 @@ export class CtlgMenubar extends HTMLElement {
         display: flex;
         justify-content: start;
         align-items: stretch;
+        padding: 0px 2px;
       }
     `;
     shadowRoot.appendChild(style);

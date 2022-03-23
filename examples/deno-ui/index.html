@@ -5,11 +5,22 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>ctlg example - deno-ui</title>
     <script type="module" async src="./index.js"></script>
+    <style>
+      @import url('https://rsms.me/inter/inter.css');
+      html { font-family: 'Inter', sans-serif; }
+      @supports (font-variation-settings: normal) {
+        html { font-family: 'Inter var', sans-serif; }
+      }
+    </style>
   </head>
   <body>
     <ctlg-menubar>
-      <div>foo</div>
-      <div>bar</div>
+      <ctlg-menubar-item id="item1" shortcut="Control+P">
+        Foo
+      </ctlg-menubar-item>
+      <ctlg-menubar-item id="item2" shortcut="Shift+Control+p">
+        Bar
+      </ctlg-menubar-item>
     </ctlg-menubar>
   </body>
 </html>
