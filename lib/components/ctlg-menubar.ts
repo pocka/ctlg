@@ -12,6 +12,7 @@ export class CtlgMenubar extends HTMLElement {
   constructor() {
     super();
 
+    // 1. Create nodes
     const shadowRoot = this.attachShadow({
       mode: "open",
     });
@@ -29,5 +30,10 @@ export class CtlgMenubar extends HTMLElement {
 
     const slot = document.createElement("slot");
     shadowRoot.appendChild(slot);
+
+    // 2. Configure ARIA attributes
+    if (!this.hasAttribute("role")) {
+      this.setAttribute("role", "menubar");
+    }
   }
 }
